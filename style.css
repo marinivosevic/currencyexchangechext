@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: row; /* Display children in a row */
+    justify-content: space-between; /* Spacing between children */
+  }
+
+  .fromCur,
+  .toCur {
+    flex: 1; /* Each child takes equal space */
+  }
+
+  .inputFor,
+  .dropdownFor {
+    display: flex;
+    flex-direction: row; /* Display label and input in a row */
+    align-items: center; /* Vertically center the items */
+  }
+
+  label {
+    margin-right: 10px; /* Add spacing between label and input/select */
+  }
+
+  select {
+    width: 100%; /* Make the select element fill the available space */
+  }
