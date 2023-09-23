@@ -9,6 +9,9 @@ var requestOptions = {
 var fromCurency;
 var toCurency;
 
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     var fromCurencySelect = document.getElementById("dropdown");
     var toCurencySelect = document.getElementById("dropdownTo");
@@ -18,7 +21,30 @@ document.addEventListener("DOMContentLoaded", function () {
     var fromCurency;
     var toCurency;
     let inputAmount;
+    fetch('https://api.apilayer.com/exchangerates_data/symbols', requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    const currencyCodes = Object.keys(result.symbols);
+  
 
+    // Loop through the currency codes and add them as options to the dropdown
+    for (const currencyCode of currencyCodes) {
+      const option = document.createElement('option');
+      option.value = currencyCode;
+      option.text = currencyCode ;
+      fromCurencySelect.appendChild(option);
+      const option2 = document.createElement('option');
+      option2.value = currencyCode;
+      option2.text = currencyCode;
+    
+      toCurencySelect.appendChild(option2);
+    }
+  })
+  .catch(error => console.log('error', error));
+
+    
+
+    
     inputAmountElement.addEventListener("change", function() {
         inputAmount = inputAmountElement.value;
     })
@@ -44,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
         });
     }
+
     
 });
 
